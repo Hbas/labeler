@@ -1,5 +1,24 @@
 <% include partials/header %>
 <form action="/data/label" method="post">
-  To Do!
+  <h2><%= data.content %></h2>
+  <input type="hidden" name="id" value="<%= data._id %>"></input>
+  <input type="text" id="tags" name="tags" class="form-control"></input>
+  <button type="submit" class="btn btn-default btn-block">Submit</button>
 </form>
+<script>
+var selectObj = $('#tags').selectize({
+    delimiter: ',',
+    persist: false,
+    options: [
+      <% tags.forEach(function(tag) { %>
+        {value: "<%= tag %>", text: "<%= tag %>"},
+    <% }); %>
+    ],
+    create: true,
+    onInitialize: function(){
+      $("#tags").focus();
+    }
+});
+selectObj[0].selectize.focus();
+</script>
 <% include partials/footer %>

@@ -8,6 +8,7 @@ module.exports = function (app) {
   app.get('/', homeHandler.home);
   app.get('/data', dataHandler.inputPage);
   app.post('/data/new', dataHandler.submit);
+  app.post('/data/label', dataHandler.submitLabel);
   app.post('/data/clear', dataHandler.clear);
   app.get('/label', dataHandler.labelPage);
   app.get('/data/labeled', dataHandler.listLabeled);

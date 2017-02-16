@@ -1,4 +1,8 @@
 var mongoose = require('mongoose');
+var moment = require('moment');
+
+var SECONDS = 1000;
+var LABELING_TIMEOUT = 10 * SECONDS;
 
 var Data = mongoose.model('Data', {
     labelerRequested: Date,
@@ -17,15 +21,24 @@ Data.hasDataWithoutLabel = function(callback){
 };
 
 Data.getNextUnlabeled = function(callback){
-  Data.find({labels: {$eq: []}}, function(err, data){
+  var now = new Date().getTime();
+  var expiration =  now - LABELING_TIMEOUT;
+  Data.find({$or: [
+    {labels: {$eq: []}, labelerRequested: {$exists: false}},
+    {labels: {$eq: []}, labelerRequested: {$lt: expiration}}
+  ]}, function(err, data){
     if(err){
-      callback(err,null);
+      callback(err, null);
     }else if(data.length === 0){
-      callback("Dont have unlabeled data");
+      callback(null, null);
     }else {
       callback(null, data[0]);
     }
   });
+};
+
+Data.getTags = function(callback){
+  Data.distinct('labels', callback);
 };
 
 
