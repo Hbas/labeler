@@ -41,9 +41,33 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">TO DO</a></li>
+            <li><a href="/data">Submit new data</a></li>
+            <li><a href="/label">Label data</a></li>
+            <li><a href="/data/labeled">Download labeled data</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-toggle="modal" data-target="#eraseModal">Erase all</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
     <div class="container" role="main">
+      <div class="modal fade" id="eraseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">WARNING!!!</h4>
+            </div>
+            <div class="modal-body">
+              <p>This action will erase all data and <strong>cannot be undone</strong>. Are you sure you want to continue?</p>
+            </div>
+            <div class="modal-footer">
+                <form action="/data/clear" method="post">
+                  <a href="/data/labeled" class="btn btn-default">Download backup</a>
+                  <button type="submit" class="btn btn-danger">Erase all data</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
