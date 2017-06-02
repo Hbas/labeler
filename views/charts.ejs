@@ -1,0 +1,21 @@
+<% include partials/header %>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    $.getJSON("/charts/data", function(array) {
+      var data = google.visualization.arrayToDataTable(array);
+      var options = {
+        vAxis: {maxValue: 100},
+        legend: 'none'
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    });
+  }
+</script>
+<div id="chart_div"></div>
+<% include partials/footer %>

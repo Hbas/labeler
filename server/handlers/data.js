@@ -59,7 +59,7 @@ module.exports.labelPage = function(req,res, next){
         if(hasData){
           res.render("wait");
         }else{
-          res.redirect("/data");
+          res.redirect("/charts");
         }
       });
     }else{

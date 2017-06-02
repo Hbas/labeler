@@ -24,6 +24,8 @@ Data.getNextUnlabeled = function(callback){
   var now = new Date().getTime();
   var expiration =  now - LABELING_TIMEOUT;
   Data.find({$or: [
+    {labels: {$exists: false}, labelerRequested: {$exists: false}},
+    {labels: {$exists: false}, labelerRequested: {$lt: expiration}},
     {labels: {$eq: []}, labelerRequested: {$exists: false}},
     {labels: {$eq: []}, labelerRequested: {$lt: expiration}}
   ]}, function(err, data){
