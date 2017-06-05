@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 
 var SECONDS = 1000;
-var LABELING_TIMEOUT = 10 * SECONDS;
+var LABELING_TIMEOUT = 60 * SECONDS;
 
 var Data = mongoose.model('Data', {
     labelerRequested: Date,
@@ -11,11 +11,11 @@ var Data = mongoose.model('Data', {
 });
 
 Data.hasDataWithoutLabel = function(callback){
-  Data.find({$or: [{labels: {$exists: false}}, {labels: {$eq: []}} ]}, function(err, data){
+  Data.count({$or: [ {labels: {$exists: false}}, {labels: {$eq: []}} ] }, function(err, count){
     if(err){
       callback(err,null);
     }else{
-      callback(null, data.length > 0);
+      callback(null, count > 0);
     }
   });
 };

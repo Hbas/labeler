@@ -1,6 +1,10 @@
 <% include partials/header %>
 <form action="/data/label" method="post">
-  <h2><%- data.content %></h2>
+  <% if(data.content.length < 50) {%>
+    <h2><%- data.content %></h2>
+  <% } else {%>
+    <p><%- data.content %></p>
+  <% } %>
   <input type="hidden" name="id" value="<%= data._id %>"></input>
   <input type="text" id="tags" name="tags" class="form-control"></input>
   <button type="submit" class="btn btn-default btn-block">Submit</button>
