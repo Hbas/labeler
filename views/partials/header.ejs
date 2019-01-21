@@ -1,76 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <!-- <link rel="icon" href="/static/img/favicon.ico"> -->
+<!doctype html>
+<html lang="en">
 
-    <title>HBAS Web Labeler</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Site -->
-    <link rel='stylesheet' href='/css/style.css' />
+  <!-- <link rel="icon" href="/static/img/favicon.ico"> -->
 
-    <!-- Components -->
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/selectize/selectize.min.js"></script>
+  <title>HBAS Web Labeler</title>
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/selectize/selectize.bootstrap3.css">
+  <!-- Components -->
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/selectize/selectize.min.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/selectize/selectize.css">
 
-  <body role="document">
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Change navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Labeler</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/data">Submit new data</a></li>
-            <li><a href="/label">Label data</a></li>
-            <li><a href="/charts">View charts</a></li>
-            <li><a href="/download/labeled">Download labeled data</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" data-toggle="modal" data-target="#eraseModal">Erase all</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-    <div class="container" role="main">
-      <div class="modal fade" id="eraseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">WARNING!!!</h4>
-            </div>
-            <div class="modal-body">
-              <p>This action will erase all data and <strong>cannot be undone</strong>. Are you sure you want to continue?</p>
-            </div>
-            <div class="modal-footer">
-                <form action="/data/clear" method="post">
-                  <a href="/download/labeled" class="btn btn-default">Download labeled data</a>
-                  <button type="submit" class="btn btn-danger">Erase everything forever</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Site -->
+  <link rel='stylesheet' href='/css/style.css' />
+
+</head>
+
+<body role="document">
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#">HBAS Labeler</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/researches">Researches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/data/next">Continue labeling</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container" role="main">

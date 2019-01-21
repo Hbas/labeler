@@ -1,28 +1,32 @@
 <% include partials/header %>
 <form action="/data/label" method="post">
   <% if(data.content.length < 50) {%>
-    <h2><%- data.content %></h2>
+  <h2>
+    <%- data.content %>
+  </h2>
   <% } else {%>
-    <p><%- data.content %></p>
+  <p>
+    <%- data.content %>
+  </p>
   <% } %>
   <input type="hidden" name="id" value="<%= data._id %>"></input>
   <input type="text" id="tags" name="tags" class="form-control"></input>
-  <button type="submit" class="btn btn-default btn-block">Submit</button>
+  <button type="submit" class="btn btn-success btn-block">Submit</button>
 </form>
 <script>
-var selectObj = $('#tags').selectize({
+  var selectObj = $('#tags').selectize({
     delimiter: ',',
     persist: false,
     options: [
-      <% tags.forEach(function(tag) { %>
-        {value: "<%= tag %>", text: "<%= tag %>"},
+      <% tags.forEach(function (tag) { %>
+      { value: "<%= tag %>", text: "<%= tag %>" },
     <% }); %>
     ],
-    create: true,
-    onInitialize: function(){
+  create: true,
+    onInitialize: function() {
       $("#tags").focus();
     }
 });
-selectObj[0].selectize.focus();
+  selectObj[0].selectize.focus();
 </script>
 <% include partials/footer %>

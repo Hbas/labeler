@@ -31,17 +31,17 @@ var db = mongoose.connection;
 /**
  * When connected to the database, listen on provided port, on all network interfaces.
  */
- db.on('error', onError);
- db.once('open', function() {
-   server.listen(port);
-   server.on('error', onError);
-   server.on('listening', onListening);
- });
+db.on('error', onError);
+db.once('open', function () {
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+});
 
- /**
-  * Connect to the database
-  */
-mongoose.connect(require('../config/db').url);
+/**
+ * Connect to the database
+ */
+mongoose.connect(require('../config/db').url, { useNewUrlParser: true });
 
 
 /**
